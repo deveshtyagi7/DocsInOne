@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import AudioToolbox
+import FirebaseDatabase
+import FirebaseAuth
 
 class SignInAndRegisterViewController: UIViewController {
 
+    @IBOutlet weak var mobileNumberUnderline: UIView!
     @IBOutlet weak var mobileNumberTextField: UITextField!
     @IBOutlet weak var loginButton2: UIButton!
     @IBOutlet weak var loginViewCard: UIView!
@@ -46,11 +50,49 @@ class SignInAndRegisterViewController: UIViewController {
     }
     
     @IBAction func loginButton2Pressed(_ sender: Any) {
-    let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
-           guard let loginOTPViewController = storyboard.instantiateViewController(identifier: "LoginOTPViewController") as? LoginOTPViewController else {return}
-           self.navigationController?.pushViewController(loginOTPViewController, animated: true)
-        let mobileNumber = mobileNumberTextField.text
-           
+        if !mobileNumberTextField.text!.isValidContact{
+            mobileNumberUnderline.backgroundColor = .red
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            
+        }else{
+             let mobNum = "+91\(mobileNumberTextField.text!)"
+            
+            //Cheching if user already exists or not
+            
+            let ref = Database.database().reference().child("users").child("phnNum")
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                
+                if snapshot.hasChild(mobNum){
+                    // signing in
+                    PhoneAuthProvider.provider().verifyPhoneNumber(mobNum, uiDelegate: nil) { (verificationID, error) in
+                        if error != nil{
+                            print("Error while verifying phone number during signing in\(error.debugDescription)")
+                        }
+                        else{
+                            // Saving verification id to local memmory
+                            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                            
+                            // Redirecting to otp screen
+                            let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+                                  guard let loginOTPViewController = storyboard.instantiateViewController(identifier: "LoginOTPViewController") as? LoginOTPViewController else {return}
+                                  self.navigationController?.pushViewController(loginOTPViewController, animated: true)
+                        }
+                    }
+                    
+                }
+                else{
+                    
+                 //Redirecting to registration page
+                    let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+                    guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
+                    self.navigationController?.pushViewController(registerViewController, animated: true)
+                    
+                }
+            }
+            
+        }
+        
     }
     
 }

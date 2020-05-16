@@ -121,7 +121,7 @@
                                             <constraint firstAttribute="height" constant="30" id="Nb9-hW-qLn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" textContentType="tel"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" smartDashesType="yes" textContentType="tel"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-qD-LAS">
                                         <rect key="frame" x="25" y="110.5" width="364" height="41"/>
@@ -208,6 +208,7 @@
                         <outlet property="loginButton2" destination="OOP-qD-LAS" id="VtM-sj-nyZ"/>
                         <outlet property="loginViewCard" destination="2Tm-tX-5y8" id="I3Y-2s-Vxk"/>
                         <outlet property="mobileNumberTextField" destination="wvc-kQ-fOc" id="eJg-QW-yUI"/>
+                        <outlet property="mobileNumberUnderline" destination="h4t-re-Dyc" id="wfo-9p-OVf"/>
                         <outlet property="registerButton" destination="D0p-xV-sxa" id="89t-Zf-YKY"/>
                     </connections>
                 </viewController>
@@ -510,6 +511,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="loginButtonPressed:" destination="qMV-1D-607" eventType="touchUpInside" id="haM-7y-tcV"/>
                                     <action selector="nextButtonPressed:" destination="Hhx-uM-hvA" eventType="touchUpInside" id="WGS-g8-yeo"/>
                                 </connections>
                             </button>
@@ -527,6 +529,7 @@
                     <connections>
                         <outlet property="cardView" destination="1rR-hm-uKX" id="TOb-H1-lLD"/>
                         <outlet property="loginButton" destination="4Xv-ar-8rk" id="KYn-Du-al2"/>
+                        <outlet property="otpTextField" destination="H1z-Ed-kYP" id="9TG-Y9-9yX"/>
                         <outlet property="resendButton" destination="SjK-tC-GfZ" id="TqD-ly-efV"/>
                         <outlet property="timerLabel" destination="jQZ-cP-BgI" id="UZf-dd-1vO"/>
                     </connections>

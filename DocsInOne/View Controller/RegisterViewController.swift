@@ -55,19 +55,20 @@ class RegisterViewController: UIViewController {
                 }
                 else{
                   
-                            PhoneAuthProvider.provider().verifyPhoneNumber(mobNum, uiDelegate: nil) { (verificationID, error) in
-                                if error != nil{
-                                    print("error while verifying mobile number\(error.debugDescription)")
-                                }else{
-                                    UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                                    UserDefaults.standard.set(name, forKey: "name")
-                                    let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
-                                           guard let registerOTPViewController = storyboard.instantiateViewController(identifier: "RegisterOTPViewController") as? RegisterOTPViewController else  {return}
-                                            registerOTPViewController.phoneNumber = mobNum
-                    
-                                           self.navigationController?.pushViewController(registerOTPViewController, animated: true)
-                                }
-                            }
+                    PhoneAuthProvider.provider().verifyPhoneNumber(mobNum, uiDelegate: nil) { (verificationID, error) in
+                        if error != nil{
+                            print("error while verifying mobile number during registration\(error.debugDescription)")
+                            return
+                        }else{
+                            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                            UserDefaults.standard.set(name, forKey: "name")
+                            let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+                            guard let registerOTPViewController = storyboard.instantiateViewController(identifier: "RegisterOTPViewController") as? RegisterOTPViewController else  {return}
+                            registerOTPViewController.phoneNumber = mobNum
+                            
+                            self.navigationController?.pushViewController(registerOTPViewController, animated: true)
+                        }
+                    }
                 }
             }
             
