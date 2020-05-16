@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MenuTableViewController.swift
 //  DocsInOne
 //
 //  Created by Devesh Tyagi on 13/05/20.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoggedOutMenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+     
     }
 
+    
+
+   
 
 }
-

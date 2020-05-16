@@ -3,27 +3,55 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103CFA2224700BAA007ED20A /* LoginOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CFA2124700BAA007ED20A /* LoginOTPViewController.swift */; };
+		103CFA2824701740007ED20A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 103CFA2724701740007ED20A /* GoogleService-Info.plist */; };
 		10923DCF246C02FC00D918F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DCE246C02FC00D918F0 /* AppDelegate.swift */; };
 		10923DD1246C02FC00D918F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DD0246C02FC00D918F0 /* SceneDelegate.swift */; };
-		10923DD3246C02FC00D918F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DD2246C02FC00D918F0 /* ViewController.swift */; };
-		10923DD6246C02FC00D918F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10923DD4246C02FC00D918F0 /* Main.storyboard */; };
+		10923DD3246C02FC00D918F0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DD2246C02FC00D918F0 /* HomeViewController.swift */; };
+		10923DD6246C02FC00D918F0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10923DD4246C02FC00D918F0 /* Home.storyboard */; };
 		10923DD8246C030500D918F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10923DD7246C030500D918F0 /* Assets.xcassets */; };
 		10923DDB246C030500D918F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10923DD9246C030500D918F0 /* LaunchScreen.storyboard */; };
+		10923DE4246C17F600D918F0 /* LoggedOutMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DE3246C17F600D918F0 /* LoggedOutMenuTableViewController.swift */; };
+		10923DE6246C372400D918F0 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10923DE5246C372400D918F0 /* Menu.storyboard */; };
+		10923DE9246C396B00D918F0 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DE8246C396B00D918F0 /* SlideInTransition.swift */; };
+		10923DEB246C3A9400D918F0 /* SignInMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10923DEA246C3A9400D918F0 /* SignInMenuTableViewController.swift */; };
+		10923DED246C451200D918F0 /* SignInAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10923DEC246C451200D918F0 /* SignInAndRegister.storyboard */; };
+		10BFA68D246C4DAD00408120 /* SignInAndRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA68C246C4DAD00408120 /* SignInAndRegisterViewController.swift */; };
+		10BFA68F246C824B00408120 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA68E246C824B00408120 /* RegisterViewController.swift */; };
+		10BFA691246C851700408120 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA690246C851700408120 /* Shadow.swift */; };
+		10BFA693246D89F800408120 /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA692246D89F800408120 /* SlideUpTransition.swift */; };
+		10BFA695246D8C4000408120 /* RegisterOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA694246D8C4000408120 /* RegisterOTPViewController.swift */; };
+		B7E38B78127FA09F09B4BFCA /* Pods_DocsInOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		103CFA2124700BAA007ED20A /* LoginOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOTPViewController.swift; sourceTree = "<group>"; };
+		103CFA2724701740007ED20A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10923DCB246C02FC00D918F0 /* DocsInOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocsInOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10923DCE246C02FC00D918F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10923DD0246C02FC00D918F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		10923DD2246C02FC00D918F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		10923DD5246C02FC00D918F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10923DD2246C02FC00D918F0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		10923DD5246C02FC00D918F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		10923DD7246C030500D918F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10923DDA246C030500D918F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10923DDC246C030500D918F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10923DE3246C17F600D918F0 /* LoggedOutMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutMenuTableViewController.swift; sourceTree = "<group>"; };
+		10923DE5246C372400D918F0 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		10923DE8246C396B00D918F0 /* SlideInTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInTransition.swift; sourceTree = "<group>"; };
+		10923DEA246C3A9400D918F0 /* SignInMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMenuTableViewController.swift; sourceTree = "<group>"; };
+		10923DEC246C451200D918F0 /* SignInAndRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInAndRegister.storyboard; sourceTree = "<group>"; };
+		10BFA68C246C4DAD00408120 /* SignInAndRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAndRegisterViewController.swift; sourceTree = "<group>"; };
+		10BFA68E246C824B00408120 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		10BFA690246C851700408120 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
+		10BFA692246D89F800408120 /* SlideUpTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpTransition.swift; sourceTree = "<group>"; };
+		10BFA694246D8C4000408120 /* RegisterOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOTPViewController.swift; sourceTree = "<group>"; };
+		39C967C7D81F443C0A271CD7 /* Pods-DocsInOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.release.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.release.xcconfig"; sourceTree = "<group>"; };
+		9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocsInOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDA701A2B6A2E1295C4A715B /* Pods-DocsInOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.debug.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7E38B78127FA09F09B4BFCA /* Pods_DocsInOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +71,8 @@
 			children = (
 				10923DCD246C02FC00D918F0 /* DocsInOne */,
 				10923DCC246C02FC00D918F0 /* Products */,
+				608A82319A136A32F1A67381 /* Pods */,
+				8E171671BE22D456E4BD7AAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +87,60 @@
 		10923DCD246C02FC00D918F0 /* DocsInOne */ = {
 			isa = PBXGroup;
 			children = (
+				10923DE8246C396B00D918F0 /* SlideInTransition.swift */,
+				10BFA692246D89F800408120 /* SlideUpTransition.swift */,
 				10923DCE246C02FC00D918F0 /* AppDelegate.swift */,
 				10923DD0246C02FC00D918F0 /* SceneDelegate.swift */,
-				10923DD2246C02FC00D918F0 /* ViewController.swift */,
-				10923DD4246C02FC00D918F0 /* Main.storyboard */,
+				10BFA690246C851700408120 /* Shadow.swift */,
+				10923DE2246C17D600D918F0 /* View Controller */,
+				10923DE7246C373C00D918F0 /* StoryBoard */,
 				10923DD7246C030500D918F0 /* Assets.xcassets */,
 				10923DD9246C030500D918F0 /* LaunchScreen.storyboard */,
+				103CFA2724701740007ED20A /* GoogleService-Info.plist */,
 				10923DDC246C030500D918F0 /* Info.plist */,
 			);
 			path = DocsInOne;
+			sourceTree = "<group>";
+		};
+		10923DE2246C17D600D918F0 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				10923DD2246C02FC00D918F0 /* HomeViewController.swift */,
+				10923DE3246C17F600D918F0 /* LoggedOutMenuTableViewController.swift */,
+				10923DEA246C3A9400D918F0 /* SignInMenuTableViewController.swift */,
+				10BFA68C246C4DAD00408120 /* SignInAndRegisterViewController.swift */,
+				10BFA68E246C824B00408120 /* RegisterViewController.swift */,
+				10BFA694246D8C4000408120 /* RegisterOTPViewController.swift */,
+				103CFA2124700BAA007ED20A /* LoginOTPViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		10923DE7246C373C00D918F0 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				10923DD4246C02FC00D918F0 /* Home.storyboard */,
+				10923DE5246C372400D918F0 /* Menu.storyboard */,
+				10923DEC246C451200D918F0 /* SignInAndRegister.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		608A82319A136A32F1A67381 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDA701A2B6A2E1295C4A715B /* Pods-DocsInOne.debug.xcconfig */,
+				39C967C7D81F443C0A271CD7 /* Pods-DocsInOne.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8E171671BE22D456E4BD7AAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10923DDF246C030500D918F0 /* Build configuration list for PBXNativeTarget "DocsInOne" */;
 			buildPhases = (
+				8BE7F6975D62CF4C80FF6628 /* [CP] Check Pods Manifest.lock */,
 				10923DC7246C02FC00D918F0 /* Sources */,
 				10923DC8246C02FC00D918F0 /* Frameworks */,
 				10923DC9246C02FC00D918F0 /* Resources */,
+				A73E05F0C3933D196E15DB65 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,33 +204,87 @@
 			buildActionMask = 2147483647;
 			files = (
 				10923DDB246C030500D918F0 /* LaunchScreen.storyboard in Resources */,
+				10923DED246C451200D918F0 /* SignInAndRegister.storyboard in Resources */,
 				10923DD8246C030500D918F0 /* Assets.xcassets in Resources */,
-				10923DD6246C02FC00D918F0 /* Main.storyboard in Resources */,
+				10923DD6246C02FC00D918F0 /* Home.storyboard in Resources */,
+				10923DE6246C372400D918F0 /* Menu.storyboard in Resources */,
+				103CFA2824701740007ED20A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8BE7F6975D62CF4C80FF6628 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DocsInOne-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A73E05F0C3933D196E15DB65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DocsInOne/Pods-DocsInOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DocsInOne/Pods-DocsInOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DocsInOne/Pods-DocsInOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		10923DC7246C02FC00D918F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10923DD3246C02FC00D918F0 /* ViewController.swift in Sources */,
+				10923DE4246C17F600D918F0 /* LoggedOutMenuTableViewController.swift in Sources */,
+				10923DD3246C02FC00D918F0 /* HomeViewController.swift in Sources */,
 				10923DCF246C02FC00D918F0 /* AppDelegate.swift in Sources */,
+				10BFA68F246C824B00408120 /* RegisterViewController.swift in Sources */,
+				10BFA691246C851700408120 /* Shadow.swift in Sources */,
 				10923DD1246C02FC00D918F0 /* SceneDelegate.swift in Sources */,
+				10BFA695246D8C4000408120 /* RegisterOTPViewController.swift in Sources */,
+				10923DEB246C3A9400D918F0 /* SignInMenuTableViewController.swift in Sources */,
+				10923DE9246C396B00D918F0 /* SlideInTransition.swift in Sources */,
+				10BFA68D246C4DAD00408120 /* SignInAndRegisterViewController.swift in Sources */,
+				103CFA2224700BAA007ED20A /* LoginOTPViewController.swift in Sources */,
+				10BFA693246D89F800408120 /* SlideUpTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		10923DD4246C02FC00D918F0 /* Main.storyboard */ = {
+		10923DD4246C02FC00D918F0 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				10923DD5246C02FC00D918F0 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		10923DD9246C030500D918F0 /* LaunchScreen.storyboard */ = {
@@ -282,11 +414,13 @@
 		};
 		10923DE0246C030500D918F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDA701A2B6A2E1295C4A715B /* Pods-DocsInOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8HL6GD96GK;
 				INFOPLIST_FILE = DocsInOne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +434,13 @@
 		};
 		10923DE1246C030500D918F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39C967C7D81F443C0A271CD7 /* Pods-DocsInOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8HL6GD96GK;
 				INFOPLIST_FILE = DocsInOne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
