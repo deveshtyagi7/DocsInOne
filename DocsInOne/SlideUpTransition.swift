@@ -24,7 +24,7 @@ class SlideUpTransition: NSObject, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
 
         let finalWidth = toViewController.view.bounds.width
-        let finalHeight = CGFloat(269)
+        let finalHeight = CGFloat(310)
         let viewHeight = toViewController.view.bounds.height
 
         if isPresenting {

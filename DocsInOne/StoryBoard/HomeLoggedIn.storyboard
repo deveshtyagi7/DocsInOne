@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DocsInOne-->
+        <scene sceneID="54h-Id-RUC">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCn-YE-06W" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="HomeLoggedInViewController" id="Fzy-21-KQw" customClass="HomeLoggedInViewController" customModule="DocsInOne" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hhq-06-DSb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJ2-h7-rAb" userLabel="Card View">
+                                <rect key="frame" x="20" y="20" width="374" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card1" translatesAutoresizingMaskIntoConstraints="NO" id="Dzh-qR-qgu" userLabel="card Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Devesh Tyagi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46R-83-thM">
+                                        <rect key="frame" x="17" y="151" width="122" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DocsInOne" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxr-Mv-D5d">
+                                        <rect key="frame" x="14" y="13" width="92" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1234  5678  9012 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfx-rY-vU0">
+                                        <rect key="frame" x="74" y="81" width="210" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="37n-BS-Nih"/>
+                                    <constraint firstItem="Dzh-qR-qgu" firstAttribute="top" secondItem="xJ2-h7-rAb" secondAttribute="top" id="AwH-F6-op6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dzh-qR-qgu" secondAttribute="trailing" id="GQX-jF-Fuk"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dzh-qR-qgu" secondAttribute="bottom" id="iC7-kQ-eiq"/>
+                                    <constraint firstItem="Dzh-qR-qgu" firstAttribute="leading" secondItem="xJ2-h7-rAb" secondAttribute="leading" id="xD5-dM-v8B"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Fl-dS-9qw" firstAttribute="trailing" secondItem="xJ2-h7-rAb" secondAttribute="trailing" constant="20" id="R4x-k3-G7C"/>
+                            <constraint firstItem="xJ2-h7-rAb" firstAttribute="top" secondItem="6Fl-dS-9qw" secondAttribute="top" constant="20" id="UeR-FU-1cd"/>
+                            <constraint firstItem="xJ2-h7-rAb" firstAttribute="leading" secondItem="6Fl-dS-9qw" secondAttribute="leading" constant="20" id="Z9w-Hv-yfp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Fl-dS-9qw"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="DocsInOne" id="m7R-hE-dIS">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="WI7-WE-tfo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tabmeuButtonPressed:" destination="Fzy-21-KQw" id="j0a-fC-P5q"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="bell.fill" catalog="system" id="xlE-qn-zwH">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1048" y="794"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l95-Kq-V6O">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ikx-2S-8S9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N83-tc-skf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="r8b-gL-eKv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.078431372550000003" green="0.14901960780000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fzy-21-KQw" kind="relationship" relationship="rootViewController" id="IWF-zc-q4x"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="138" y="794"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="card1" width="714.5" height="490"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+    </resources>
+</document>

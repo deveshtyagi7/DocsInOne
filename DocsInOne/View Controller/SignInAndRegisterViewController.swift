@@ -52,7 +52,7 @@ class SignInAndRegisterViewController: UIViewController {
     @IBAction func loginButton2Pressed(_ sender: Any) {
         if !mobileNumberTextField.text!.isValidContact{
             mobileNumberUnderline.backgroundColor = .red
-            let generator = UIImpactFeedbackGenerator(style: .light)
+            let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             
         }else{

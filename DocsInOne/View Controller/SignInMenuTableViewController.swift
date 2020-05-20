@@ -8,15 +8,43 @@
 
 import UIKit
 
-class SignInMenuTableViewController: UITableViewController {
 
+
+class SignInMenuTableViewController: UITableViewController {
+    var didTapMenuType: ((menuType) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
-
-
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let menuType = menuType(rawValue: indexPath.row) else { return }
+        if(indexPath.row == 0){
+            dismiss(animated: true)
+        } else{
+            dismiss(animated: true) { [weak self] in
+                print("Dismissing: \(menuType)")
+                self?.didTapMenuType?(menuType)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+}
+enum menuType : Int{
+    case home
+    case uploadedDoc
+    case uploadDoc
+    case editprofile
+    case faqs
+    case about
+    case contactUs
+    case logout
+    
+    
 }

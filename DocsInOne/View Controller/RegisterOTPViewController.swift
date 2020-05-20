@@ -75,7 +75,7 @@ class RegisterOTPViewController: UIViewController {
                 
                 
                 // User was created successfully, now store the first name and last name
-                let db = Firestore.firestore()
+              
                 let date = Date()
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyyHHmmssSS"
@@ -88,9 +88,10 @@ class RegisterOTPViewController: UIViewController {
                     if let error = error {
                         print("Data could not be saved: \(error).")
                     } else {
-                        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                        guard let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as? HomeViewController else {return}
-                        self.navigationController?.pushViewController(homeViewController, animated: true)
+                        UserDefaults.standard.set(true, forKey: "loggedIn")
+                        let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
+                        guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
+                        self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
                     }
                 }
             }

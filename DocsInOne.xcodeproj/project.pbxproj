@@ -25,6 +25,9 @@
 		10BFA691246C851700408120 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA690246C851700408120 /* Shadow.swift */; };
 		10BFA693246D89F800408120 /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA692246D89F800408120 /* SlideUpTransition.swift */; };
 		10BFA695246D8C4000408120 /* RegisterOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BFA694246D8C4000408120 /* RegisterOTPViewController.swift */; };
+		10CA3A7524750F4000712EBE /* CREDC in Resources */ = {isa = PBXBuildFile; fileRef = 10CA3A7424750F4000712EBE /* CREDC */; };
+		10CA3A782475B85200712EBE /* HomeLoggedIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */; };
+		10CA3A7A2475B88E00712EBE /* HomeLoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */; };
 		B7E38B78127FA09F09B4BFCA /* Pods_DocsInOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		10BFA690246C851700408120 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		10BFA692246D89F800408120 /* SlideUpTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpTransition.swift; sourceTree = "<group>"; };
 		10BFA694246D8C4000408120 /* RegisterOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterOTPViewController.swift; sourceTree = "<group>"; };
+		10CA3A7424750F4000712EBE /* CREDC */ = {isa = PBXFileReference; lastKnownFileType = file; path = CREDC; sourceTree = "<group>"; };
+		10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeLoggedIn.storyboard; sourceTree = "<group>"; };
+		10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoggedInViewController.swift; sourceTree = "<group>"; };
 		39C967C7D81F443C0A271CD7 /* Pods-DocsInOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.release.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.release.xcconfig"; sourceTree = "<group>"; };
 		9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocsInOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDA701A2B6A2E1295C4A715B /* Pods-DocsInOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.debug.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,9 +101,10 @@
 				10923DE2246C17D600D918F0 /* View Controller */,
 				10923DE7246C373C00D918F0 /* StoryBoard */,
 				10923DD7246C030500D918F0 /* Assets.xcassets */,
-				10923DD9246C030500D918F0 /* LaunchScreen.storyboard */,
 				103CFA2724701740007ED20A /* GoogleService-Info.plist */,
+				10923DD9246C030500D918F0 /* LaunchScreen.storyboard */,
 				10923DDC246C030500D918F0 /* Info.plist */,
+				10CA3A7424750F4000712EBE /* CREDC */,
 			);
 			path = DocsInOne;
 			sourceTree = "<group>";
@@ -106,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				10923DD2246C02FC00D918F0 /* HomeViewController.swift */,
+				10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */,
 				10923DE3246C17F600D918F0 /* LoggedOutMenuTableViewController.swift */,
 				10923DEA246C3A9400D918F0 /* SignInMenuTableViewController.swift */,
 				10BFA68C246C4DAD00408120 /* SignInAndRegisterViewController.swift */,
@@ -122,6 +130,7 @@
 				10923DD4246C02FC00D918F0 /* Home.storyboard */,
 				10923DE5246C372400D918F0 /* Menu.storyboard */,
 				10923DEC246C451200D918F0 /* SignInAndRegister.storyboard */,
+				10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -203,11 +212,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CA3A782475B85200712EBE /* HomeLoggedIn.storyboard in Resources */,
 				10923DDB246C030500D918F0 /* LaunchScreen.storyboard in Resources */,
 				10923DED246C451200D918F0 /* SignInAndRegister.storyboard in Resources */,
 				10923DD8246C030500D918F0 /* Assets.xcassets in Resources */,
 				10923DD6246C02FC00D918F0 /* Home.storyboard in Resources */,
 				10923DE6246C372400D918F0 /* Menu.storyboard in Resources */,
+				10CA3A7524750F4000712EBE /* CREDC in Resources */,
 				103CFA2824701740007ED20A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10923DE4246C17F600D918F0 /* LoggedOutMenuTableViewController.swift in Sources */,
+				10CA3A7A2475B88E00712EBE /* HomeLoggedInViewController.swift in Sources */,
 				10923DD3246C02FC00D918F0 /* HomeViewController.swift in Sources */,
 				10923DCF246C02FC00D918F0 /* AppDelegate.swift in Sources */,
 				10BFA68F246C824B00408120 /* RegisterViewController.swift in Sources */,

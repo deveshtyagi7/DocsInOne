@@ -10,14 +10,37 @@ import UIKit
 
 class LoggedOutMenuTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-     
+   var didTapMenuType: ((logOutMenuType) -> Void)?
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            
+        }
+        
+        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            guard let menuType = logOutMenuType(rawValue: indexPath.row) else { return }
+         
+                dismiss(animated: true) { [weak self] in
+                    print("Dismissing: \(menuType)")
+                    self?.didTapMenuType?(menuType)
+             
+            }
+        }
+        
+        
+        
+        
+        
     }
+    enum logOutMenuType : Int{
+        case signIn
+        case signUp
+        case help
+        case faqs
+        case about
+        case contact
 
-    
-
-   
-
-}
+        
+        
+    }

@@ -68,9 +68,10 @@ class LoginOTPViewController: UIViewController {
                      print("error while signing in user \(error.debugDescription)")
                 }
                 else{
-                    let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                    guard let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as? HomeViewController else {return}
-                    self.navigationController?.pushViewController(homeViewController, animated: true)
+                    print("Login Successful -------->")
+                    let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
+                    guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
+                    self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
                 }
             }
     }

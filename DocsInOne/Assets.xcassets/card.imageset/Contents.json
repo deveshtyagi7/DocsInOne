@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "abstract-falling-golden-glitter-lights-texture-on-a-dark-blue-background-with-lighting-vector-1.jpg",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "abstract-falling-golden-glitter-lights-texture-on-a-dark-blue-background-with-lighting-vector-2.jpg",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "abstract-falling-golden-glitter-lights-texture-on-a-dark-blue-background-with-lighting-vector-3.jpg",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
