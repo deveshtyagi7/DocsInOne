@@ -11,15 +11,18 @@ import FirebaseAuth
 
 class HomeLoggedInViewController: UIViewController {
     
+    @IBOutlet weak var cardView: UIImageView!
     
+    @IBOutlet weak var uidTextField: UILabel!
     
+    @IBOutlet weak var nameTextField: UIImageView!
     let transition  = SlideInTransition()
     var topView: UIView?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Shadow.applyShadowOnView(yourView: cardView, radius: 10)
         // Do any additional setup after loading the view.
     }
     
@@ -70,34 +73,37 @@ class HomeLoggedInViewController: UIViewController {
         
     }
     func transitionToNew(_ menuType: menuType) {
-              let title = String(describing: menuType).capitalized
-              self.title = title
-
-              topView?.removeFromSuperview()
-              switch menuType {
-              case .logout:
-                     let firebaseAuth = Auth.auth()
-                 do {
-                    try firebaseAuth.signOut()
-                 } catch let signOutError as NSError {
-                   print ("Error signing out: %@", signOutError)
-                    return
-                 }
+        let title = String(describing: menuType).capitalized
+        self.title = title
+        
+        topView?.removeFromSuperview()
+        switch menuType {
+        case .logout:
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                   print("Successfully log out")
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                     guard let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as? HomeViewController else {return}
-                     self.navigationController?.pushViewController(homeViewController, animated: true)
+                guard let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as? HomeViewController else {return}
+                self.navigationController?.pushViewController(homeViewController, animated: true)
+             
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+                return
+            }
             
-                
-//              case .editprofile:
-//                  let view = UIView()
-//                  view.backgroundColor = .blue
-//                  view.frame = self.view.bounds
-//                  self.view.addSubview(view)
-//                  self.topView = view
-              default:
-                  break
-              }
-          }
+            
+            
+            //              case .editprofile:
+            //                  let view = UIView()
+            //                  view.backgroundColor = .blue
+            //                  view.frame = self.view.bounds
+            //                  self.view.addSubview(view)
+        //                  self.topView = view
+        default:
+            break
+        }
+    }
     
     
     

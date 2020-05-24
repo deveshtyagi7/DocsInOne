@@ -10,19 +10,34 @@ import UIKit
 import FirebaseAuth
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var signInButton: UIBarButtonItem!
-   
+    //MARK: Properties
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        addNavBarImage()
-    }
-  
+    @IBOutlet weak var signInButton: UIBarButtonItem!
     let transition  = SlideInTransition()
     var topView: UIView?
     
+    
+    
+    
+    //MARK:- Auto Login
+    fileprivate func autoLogin() {
+        
+        if Auth.auth().currentUser != nil{
+            goToHomeLoggedInViewController()
+        }
+    }
+    
+    
+    
+    //MARK: Actions
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        autoLogin()
+        addNavBarImage()
+        
+        
+    }
     func addNavBarImage(){
         let navController = navigationController!
         
@@ -45,60 +60,54 @@ class HomeViewController: UIViewController {
     @IBAction func tabmeuButtonPressed(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         
-       
-            guard let menuViewController = storyboard.instantiateViewController(identifier: "LoggedOutMenuTableViewController") as? LoggedOutMenuTableViewController else{return}
+        
+        guard let menuViewController = storyboard.instantiateViewController(identifier: "LoggedOutMenuTableViewController") as? LoggedOutMenuTableViewController else{return}
         
         menuViewController.didTapMenuType = { menuType in
-                  self.transitionToNew(menuType)
-              }
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onClickTransparentView))
-            
-            let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(onClickTransparentView))
-            swipeLeftGesture.direction = .left
-            
-            
-            transition.dimmingView.addGestureRecognizer(tapGesture)
-            transition.dimmingView.addGestureRecognizer(swipeLeftGesture)
-            menuViewController.modalPresentationStyle = .overCurrentContext
-            menuViewController.transitioningDelegate = self
-            present(menuViewController, animated: true)
+            self.transitionToNew(menuType)
+        }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onClickTransparentView))
+        
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(onClickTransparentView))
+        swipeLeftGesture.direction = .left
+        
+        
+        transition.dimmingView.addGestureRecognizer(tapGesture)
+        transition.dimmingView.addGestureRecognizer(swipeLeftGesture)
+        menuViewController.modalPresentationStyle = .overCurrentContext
+        menuViewController.transitioningDelegate = self
+        present(menuViewController, animated: true)
         
     }
     
     func transitionToNew(_ menuType: logOutMenuType) {
-                 let title = String(describing: menuType).capitalized
-                 self.title = title
-
-                 topView?.removeFromSuperview()
-                 switch menuType {
-//                 case .profile:
-//                     let view = UIView()
-//                     view.backgroundColor = .yellow
-//                     view.frame = self.view.bounds
-//                     self.view.addSubview(view)
-//                     self.topView = view
-//                 case .editprofile:
-//                     let view = UIView()
-//                     view.backgroundColor = .blue
-//                     view.frame = self.view.bounds
-//                     self.view.addSubview(view)
-//                     self.topView = view
-                 default:
-                     break
-                 }
-             }
-       
+        let title = String(describing: menuType).capitalized
+        self.title = title
+        
+        topView?.removeFromSuperview()
+        switch menuType {
+        case .signIn :
+            goToSignInAndRegisterViewController()
+            break
+        case .signUp :
+            goToRegisterViewController()
+            break
+            
+        default:
+            break
+        }
+    }
+    
     
     
     
     
     @IBAction func SignInButtonPressed(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
-        
-        guard let SignInAndRegisterViewController = storyboard.instantiateViewController(identifier: "SignInAndRegisterViewController") as? SignInAndRegisterViewController else {return}
-        self.navigationController?.pushViewController( SignInAndRegisterViewController, animated: true)
+        goToSignInAndRegisterViewController()
     }
+    
+    
     
     @objc func onClickTransparentView(){
         dismiss(animated: true)
@@ -121,3 +130,60 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
+//MARK: TableView Delegate
+extension HomeViewController :UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        if row == 0{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "imageSliderTableViewCell", for: indexPath) as! ImageSliderTableViewCell
+            cell.delegate = self
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryTableCell", for: indexPath) as! CategoryTableViewCell
+            cell.categoryNameLabel.text = "Category \(row)"
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let row = indexPath.row
+        if row == 0 {
+            return 345
+        }else{
+            return 220
+        }
+        
+    }
+    
+    
+    
+}
+// MARK: ImageSliderTableViewCellDelegate and navigations
+extension HomeViewController : ImageSliderTableViewCellDelegate{
+    func goToSignInAndRegisterViewController() {
+        
+        let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+        
+        guard let SignInAndRegisterViewController = storyboard.instantiateViewController(identifier: "SignInAndRegisterViewController") as? SignInAndRegisterViewController else {return}
+        self.navigationController?.pushViewController( SignInAndRegisterViewController, animated: true)
+    }
+    
+    func goToRegisterViewController(){
+        let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+        guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
+        self.navigationController?.pushViewController(registerViewController, animated: true)
+    }
+    func goToHomeLoggedInViewController(){
+        let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
+        guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else{return}
+        self.navigationController?.pushViewController(homeLoggedInViewController, animated: false)
+    }
+}

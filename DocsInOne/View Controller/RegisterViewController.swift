@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
         let mobNum = "+91\(mobileNumberTextField.text!)"
         let name =  nameTextField.text!
             
-            let ref =  Database.database().reference().child("users")
+            let ref =  Database.database().reference()
             ref.child("phnNum").observeSingleEvent(of: .value) { (snapshot) in
                 if snapshot.hasChild(mobNum){
                     

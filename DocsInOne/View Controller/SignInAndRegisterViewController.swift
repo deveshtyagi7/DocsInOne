@@ -33,11 +33,14 @@ class SignInAndRegisterViewController: UIViewController {
         loginButton1.isEnabled = true
     }
     @IBAction func registerButtonPressed(_ sender: Any) {
+        goToRegisterViewController()
+        
+    
+    }
+    func goToRegisterViewController(){
         let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
         guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
         self.navigationController?.pushViewController(registerViewController, animated: true)
-        
-    
     }
     
 
@@ -60,7 +63,7 @@ class SignInAndRegisterViewController: UIViewController {
             
             //Cheching if user already exists or not
             
-            let ref = Database.database().reference().child("users").child("phnNum")
+            let ref = Database.database().reference().child("phnNum")
             ref.observeSingleEvent(of: .value) { (snapshot) in
                 
                 if snapshot.hasChild(mobNum){
@@ -84,9 +87,7 @@ class SignInAndRegisterViewController: UIViewController {
                 else{
                     
                  //Redirecting to registration page
-                    let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
-                    guard let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as? RegisterViewController else {return}
-                    self.navigationController?.pushViewController(registerViewController, animated: true)
+                    self.goToRegisterViewController()
                     
                 }
             }
