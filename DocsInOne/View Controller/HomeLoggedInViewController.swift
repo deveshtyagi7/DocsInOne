@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-
+import ProgressHUD
 class HomeLoggedInViewController: UIViewController {
     
     @IBOutlet weak var cardView: UIImageView!
@@ -79,19 +78,13 @@ class HomeLoggedInViewController: UIViewController {
         topView?.removeFromSuperview()
         switch menuType {
         case .logout:
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-                   print("Successfully log out")
+            AuthServices.logout(completion: {
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
                 guard let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as? HomeViewController else {return}
                 self.navigationController?.pushViewController(homeViewController, animated: true)
-             
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-                return
+            }) { (err) in
+                ProgressHUD.showError(err)
             }
-            
             
             
             //              case .editprofile:

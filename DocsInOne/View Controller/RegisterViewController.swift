@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseDatabase
-import FirebaseAuth
 class RegisterViewController: UIViewController {
     @IBOutlet weak var errorTextLabel: UILabel!
     
@@ -18,14 +17,14 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
-     //  let transition  = SlideUpTransition()
-       var topView: UIView?
+    //  let transition  = SlideUpTransition()
+    var topView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Shadow.applyShadowOnView(yourView: registerView, radius: 10)
         Shadow.applyShadowOnView(yourView: nextButton, radius: 20)
-       
+        
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -41,8 +40,8 @@ class RegisterViewController: UIViewController {
         }else{
             
             
-        let mobNum = "+91\(mobileNumberTextField.text!)"
-        let name =  nameTextField.text!
+            let mobNum = "+91\(mobileNumberTextField.text!)"
+            let name =  nameTextField.text!
             
             let ref =  Database.database().reference()
             ref.child("phnNum").observeSingleEvent(of: .value) { (snapshot) in
@@ -50,39 +49,33 @@ class RegisterViewController: UIViewController {
                     
                     self.errorTextLabel.textColor = .red
                     self.errorTextLabel.text = "Mobile number already registered with DocsInOne.You can login with this number"
-                               return
+                    return
                     
                 }
                 else{
-                  
-                    PhoneAuthProvider.provider().verifyPhoneNumber(mobNum, uiDelegate: nil) { (verificationID, error) in
-                        if error != nil{
-                            print("error while verifying mobile number during registration\(error.debugDescription)")
-                            return
-                        }else{
-                            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                            UserDefaults.standard.set(name, forKey: "name")
-                            let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
-                            guard let registerOTPViewController = storyboard.instantiateViewController(identifier: "RegisterOTPViewController") as? RegisterOTPViewController else  {return}
-                            registerOTPViewController.phoneNumber = mobNum
-                            
-                            self.navigationController?.pushViewController(registerOTPViewController, animated: true)
-                        }
+                    
+                    AuthServices.signIn(with: mobNum) {
+                        UserDefaults.standard.set(name, forKey: "name")
+                        let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+                        guard let registerOTPViewController = storyboard.instantiateViewController(identifier: "RegisterOTPViewController") as? RegisterOTPViewController else  {return}
+                        registerOTPViewController.phoneNumber = mobNum
+                        
+                        self.navigationController?.pushViewController(registerOTPViewController, animated: true)
                     }
                 }
             }
             
             
+        }
+        
+        
+        
+        
     }
-        
-        
-
-        
-}
-
-      
     
-
+    
+    
+    
 }
 extension String {
     var isValidContact: Bool {

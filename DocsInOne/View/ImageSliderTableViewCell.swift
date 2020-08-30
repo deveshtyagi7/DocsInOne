@@ -47,7 +47,6 @@ class ImageSliderTableViewCell: UITableViewCell {
         }
     }
     @IBAction func getStartedPressed(_ sender: Any) {
-        print("button is clicked")
         delegate?.goToSignInAndRegisterViewController()
     }
     
@@ -67,7 +66,6 @@ extension ImageSliderTableViewCell : UICollectionViewDelegate,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = imagesSliderCollectionView.dequeueReusableCell(withReuseIdentifier: "imageSlider", for: indexPath) as! ImageCollectionViewCell
         let image = UIImage(named: "Pi\(indexPath.row)")
-        print("IndexPath . row ==\(indexPath.row)")
         cell.image = image
         return cell
     }

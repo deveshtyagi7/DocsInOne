@@ -8,8 +8,6 @@
 
 import UIKit
 import AudioToolbox
-import FirebaseAuth
-
 class LoginOTPViewController: UIViewController {
     
     @IBOutlet weak var otpTextField: UITextField!
@@ -62,17 +60,12 @@ class LoginOTPViewController: UIViewController {
             self.otpTextField.layer.borderColor = UIColor.red.cgColor
         }
         else{
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: otpTextField.text!)
-            Auth.auth().signIn(with: credential) { (authData, error) in
-                if error != nil{
-                     print("error while signing in user \(error.debugDescription)")
-                }
-                else{
-                    print("Login Successful -------->")
-                    let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
-                    guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
-                    self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
-                }
+            AuthServices.otpVerification(withVerificationID: verificationID!, withOtp: otpTextField.text!, completion: {
+                let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
+                guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
+                self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
+            }) { (err) in
+                print(err!)
             }
     }
     }

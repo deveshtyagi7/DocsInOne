@@ -9,10 +9,9 @@
 import UIKit
 import AudioToolbox
 import FirebaseDatabase
-import FirebaseAuth
 
 class SignInAndRegisterViewController: UIViewController {
-
+    
     @IBOutlet weak var mobileNumberUnderline: UIView!
     @IBOutlet weak var mobileNumberTextField: UITextField!
     @IBOutlet weak var loginButton2: UIButton!
@@ -23,11 +22,11 @@ class SignInAndRegisterViewController: UIViewController {
         super.viewDidLoad()
         Shadow.applyShadowOnView(yourView: loginButton1, radius: 20)
         Shadow.applyShadowOnView(yourView: registerButton, radius: 20)
-      
+        
         Shadow.applyShadowOnView(yourView: loginButton2, radius: 20)
     }
     override func viewWillAppear(_ animated: Bool) {
-          loginViewCard.isHidden = true
+        loginViewCard.isHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         loginButton1.isEnabled = true
@@ -35,7 +34,7 @@ class SignInAndRegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: Any) {
         goToRegisterViewController()
         
-    
+        
     }
     func goToRegisterViewController(){
         let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
@@ -43,12 +42,12 @@ class SignInAndRegisterViewController: UIViewController {
         self.navigationController?.pushViewController(registerViewController, animated: true)
     }
     
-
+    
     @IBAction func loginButton1Pressed(_ sender: Any) {
         loginViewCard.isHidden = false
         
         loginButton1.isEnabled = false
-       
+        
         
     }
     
@@ -59,34 +58,26 @@ class SignInAndRegisterViewController: UIViewController {
             generator.impactOccurred()
             
         }else{
-             let mobNum = "+91\(mobileNumberTextField.text!)"
+            let phoneNum = "+91\(mobileNumberTextField.text!)"
             
             //Cheching if user already exists or not
             
             let ref = Database.database().reference().child("phnNum")
             ref.observeSingleEvent(of: .value) { (snapshot) in
                 
-                if snapshot.hasChild(mobNum){
-                    // signing in
-                    PhoneAuthProvider.provider().verifyPhoneNumber(mobNum, uiDelegate: nil) { (verificationID, error) in
-                        if error != nil{
-                            print("Error while verifying phone number during signing in\(error.debugDescription)")
-                        }
-                        else{
-                            // Saving verification id to local memmory
-                            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                            
-                            // Redirecting to otp screen
-                            let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
-                                  guard let loginOTPViewController = storyboard.instantiateViewController(identifier: "LoginOTPViewController") as? LoginOTPViewController else {return}
-                                  self.navigationController?.pushViewController(loginOTPViewController, animated: true)
-                        }
+                if snapshot.hasChild(phoneNum){
+                    AuthServices.signIn(with: phoneNum) {
+                        // Redirecting to otp screen
+                        let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
+                        guard let loginOTPViewController = storyboard.instantiateViewController(identifier: "LoginOTPViewController") as? LoginOTPViewController else {return}
+                        self.navigationController?.pushViewController(loginOTPViewController, animated: true)
                     }
+                    
                     
                 }
                 else{
                     
-                 //Redirecting to registration page
+                    //Redirecting to registration page
                     self.goToRegisterViewController()
                     
                 }

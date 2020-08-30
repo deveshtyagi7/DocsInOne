@@ -32,6 +32,8 @@
 		10CA3A7524750F4000712EBE /* CREDC in Resources */ = {isa = PBXBuildFile; fileRef = 10CA3A7424750F4000712EBE /* CREDC */; };
 		10CA3A782475B85200712EBE /* HomeLoggedIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */; };
 		10CA3A7A2475B88E00712EBE /* HomeLoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */; };
+		10DF035724FBC12A0030568F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DF035624FBC12A0030568F /* AuthServices.swift */; };
+		10DF035924FBC5F10030568F /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DF035824FBC5F10030568F /* Api.swift */; };
 		B7E38B78127FA09F09B4BFCA /* Pods_DocsInOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		10CA3A7424750F4000712EBE /* CREDC */ = {isa = PBXFileReference; lastKnownFileType = file; path = CREDC; sourceTree = "<group>"; };
 		10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeLoggedIn.storyboard; sourceTree = "<group>"; };
 		10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoggedInViewController.swift; sourceTree = "<group>"; };
+		10DF035624FBC12A0030568F /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		10DF035824FBC5F10030568F /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		39C967C7D81F443C0A271CD7 /* Pods-DocsInOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.release.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.release.xcconfig"; sourceTree = "<group>"; };
 		9C799BDF6C782A428B550DD4 /* Pods_DocsInOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocsInOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDA701A2B6A2E1295C4A715B /* Pods-DocsInOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.debug.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 		10923DCD246C02FC00D918F0 /* DocsInOne */ = {
 			isa = PBXGroup;
 			children = (
+				10DF035524FBC0CD0030568F /* APIs and Helper */,
 				10923DE8246C396B00D918F0 /* SlideInTransition.swift */,
 				10BFA692246D89F800408120 /* SlideUpTransition.swift */,
 				10923DCE246C02FC00D918F0 /* AppDelegate.swift */,
@@ -153,6 +158,15 @@
 				10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		10DF035524FBC0CD0030568F /* APIs and Helper */ = {
+			isa = PBXGroup;
+			children = (
+				10DF035624FBC12A0030568F /* AuthServices.swift */,
+				10DF035824FBC5F10030568F /* Api.swift */,
+			);
+			path = "APIs and Helper";
 			sourceTree = "<group>";
 		};
 		608A82319A136A32F1A67381 /* Pods */ = {
@@ -295,6 +309,7 @@
 				10923DE4246C17F600D918F0 /* LoggedOutMenuTableViewController.swift in Sources */,
 				10CA3A7A2475B88E00712EBE /* HomeLoggedInViewController.swift in Sources */,
 				10923DD3246C02FC00D918F0 /* HomeViewController.swift in Sources */,
+				10DF035924FBC5F10030568F /* Api.swift in Sources */,
 				10B364C5247A5F56007BC959 /* CategoryCollectionViewCell.swift in Sources */,
 				10923DCF246C02FC00D918F0 /* AppDelegate.swift in Sources */,
 				10BFA68F246C824B00408120 /* RegisterViewController.swift in Sources */,
@@ -307,6 +322,7 @@
 				10923DE9246C396B00D918F0 /* SlideInTransition.swift in Sources */,
 				1070C0C02477D14E001F0575 /* ImageCollectionViewCell.swift in Sources */,
 				10BFA68D246C4DAD00408120 /* SignInAndRegisterViewController.swift in Sources */,
+				10DF035724FBC12A0030568F /* AuthServices.swift in Sources */,
 				103CFA2224700BAA007ED20A /* LoginOTPViewController.swift in Sources */,
 				10BFA693246D89F800408120 /* SlideUpTransition.swift in Sources */,
 			);
@@ -384,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -438,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

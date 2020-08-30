@@ -8,8 +8,6 @@
 
 import UIKit
 
-import FirebaseAuth
-import FirebaseDatabase
 import FirebaseFirestore
 
 class RegisterOTPViewController: UIViewController {
@@ -60,43 +58,22 @@ class RegisterOTPViewController: UIViewController {
     
     
     @IBAction func submitButtonPressed(_ sender: Any) {
-        let credential = PhoneAuthProvider.provider().credential(
-            withVerificationID: verificationID!,
-            verificationCode: otpTextField.text!)
         
-        Auth.auth().signIn(with: credential) { (authData, error) in
-            if error != nil{
-                print("error while registering new user \(error.debugDescription)")
-                self.otpTextField.layer.borderWidth = 2.0
-                self.otpTextField.layer.borderColor = UIColor.red.cgColor
-            }else{
-                
-                print("Successfully    login -------------------->")
-                
-                
-                // User was created successfully, now store the first name and last name
-              
-                let date = Date()
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyyHHmmssSS"
-                let uid = formatter.string(from: date)
-                
-                let ref = Database.database().reference().child("users").child("phnNum")
-                
-                ref.child(self.phoneNumber!).setValue(uid){
-                    (error:Error?, ref:DatabaseReference) in
-                    if let error = error {
-                        print("Data could not be saved: \(error).")
-                    } else {
-                        UserDefaults.standard.set(true, forKey: "loggedIn")
-                        let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
-                        guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
-                        self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
-                    }
-                }
-            }
+        AuthServices.otpVerification(withVerificationID: verificationID!, withOtp: otpTextField.text!, completion: {
             
+            AuthServices.register(withPhoneNumber: self.phoneNumber!) {
+                 UserDefaults.standard.set(true, forKey: "loggedIn")
+                           let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
+                           guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
+                           self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
+            }
+           
+        }) {(error) in
+            print("error while registering new user \(error)")
+            self.otpTextField.layer.borderWidth = 2.0
+            self.otpTextField.layer.borderColor = UIColor.red.cgColor
         }
+        
     }
     
     

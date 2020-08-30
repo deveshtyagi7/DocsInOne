@@ -7,9 +7,6 @@
 //
 
 import UIKit
-
-
-
 class SignInMenuTableViewController: UITableViewController {
     var didTapMenuType: ((menuType) -> Void)?
     
