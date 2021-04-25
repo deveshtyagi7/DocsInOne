@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IpX-jh-fRR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Upload Doc Vc-->
+        <scene sceneID="cI2-yq-VeH">
+            <objects>
+                <viewController storyboardIdentifier="UploadDocVc" id="IpX-jh-fRR" customClass="UploadDocVc" customModule="DocsInOne" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C3T-SC-cRH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="WIh-5p-NSS">
+                                <rect key="frame" x="25" y="164" width="364" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPC-rB-tFr">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="41"/>
+                                        <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="5L9-Jo-oGN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="Scan a Document">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="20.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="scanADoc:" destination="IpX-jh-fRR" eventType="touchUpInside" id="AEG-Fl-rDs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-tM-ljy">
+                                        <rect key="frame" x="0.0" y="91" width="364" height="41"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="364" id="1rd-7t-qab"/>
+                                            <constraint firstAttribute="height" constant="41" id="bm3-cw-3sj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="View Already Uploaded File">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="20.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectDocFromPhotos:" destination="IpX-jh-fRR" eventType="touchUpInside" id="fVP-uW-mFo"/>
+                                            <action selector="viewAlreadyUploadedDoc:" destination="IpX-jh-fRR" eventType="touchUpInside" id="nxX-88-QOC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-x8-OiI" customClass="PDFView">
+                                <rect key="frame" x="25" y="326" width="364" height="496"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dJG-w4-4sg"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstItem="Yvc-x8-OiI" firstAttribute="top" secondItem="WIh-5p-NSS" secondAttribute="bottom" constant="30" id="6n0-vF-OWk"/>
+                            <constraint firstItem="dJG-w4-4sg" firstAttribute="trailing" secondItem="Yvc-x8-OiI" secondAttribute="trailing" constant="25" id="QH7-nj-26w"/>
+                            <constraint firstItem="dJG-w4-4sg" firstAttribute="bottom" secondItem="Yvc-x8-OiI" secondAttribute="bottom" constant="40" id="YSf-aB-S00"/>
+                            <constraint firstItem="WIh-5p-NSS" firstAttribute="top" secondItem="dJG-w4-4sg" secondAttribute="top" constant="120" id="Zln-Ff-y3a"/>
+                            <constraint firstItem="Yvc-x8-OiI" firstAttribute="leading" secondItem="dJG-w4-4sg" secondAttribute="leading" constant="25" id="iNP-C3-6N6"/>
+                            <constraint firstItem="WIh-5p-NSS" firstAttribute="centerX" secondItem="C3T-SC-cRH" secondAttribute="centerX" id="m0e-M7-VBD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pdfViewer" destination="Yvc-x8-OiI" id="4rH-5o-86l"/>
+                        <outlet property="viewDocBtn" destination="kKW-tM-ljy" id="Flb-jI-sMd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TsA-E0-4Ld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292" y="126"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

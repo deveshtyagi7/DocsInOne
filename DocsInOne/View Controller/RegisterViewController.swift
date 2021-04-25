@@ -59,7 +59,7 @@ class RegisterViewController: UIViewController {
                         let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
                         guard let registerOTPViewController = storyboard.instantiateViewController(identifier: "RegisterOTPViewController") as? RegisterOTPViewController else  {return}
                         registerOTPViewController.phoneNumber = mobNum
-                        
+                        registerOTPViewController.name = name
                         self.navigationController?.pushViewController(registerOTPViewController, animated: true)
                     }
                 }

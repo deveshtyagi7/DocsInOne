@@ -22,7 +22,7 @@ class LoginOTPViewController: UIViewController {
     var timer = Timer()
     var time  = 60
     
-    
+    var phoneNum = ""
     
     
     override func viewDidLoad() {
@@ -63,6 +63,7 @@ class LoginOTPViewController: UIViewController {
             AuthServices.otpVerification(withVerificationID: verificationID!, withOtp: otpTextField.text!, completion: {
                 let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
                 guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
+                setUserID(userid: self.phoneNum)
                 self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
             }) { (err) in
                 print(err!)

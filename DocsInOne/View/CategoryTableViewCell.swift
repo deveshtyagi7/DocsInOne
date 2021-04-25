@@ -7,11 +7,17 @@
 //
 
 import UIKit
-
+protocol CategoryTableViewCellDelegate : class {
+   func goToUploadDoc(docName :String)
+}
 class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    let govtDoc = ["Aadhar","Pan Card", "Driving Licence"]
+    let personalDoc = [ "10th Marksheet","Insurance","12th Marksheet"]
+    var isForGovt = false
+    var delegate : CategoryTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,12 +37,30 @@ extension CategoryTableViewCell:UICollectionViewDataSource,UICollectionViewDeleg
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if isForGovt{
+            return govtDoc.count
+        }else {
+            return personalDoc.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
+        if isForGovt{
+            cell.categoryCellImage.image = UIImage(named: govtDoc[indexPath.row])
+            cell.categoryCellName.text = govtDoc[indexPath.row]
+        }else {
+            cell.categoryCellImage.image = UIImage(named: personalDoc[indexPath.row])
+            cell.categoryCellName.text = personalDoc[indexPath.row]
+        }
        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isForGovt{
+            delegate?.goToUploadDoc(docName: govtDoc[indexPath.row])
+        }else{
+            delegate?.goToUploadDoc(docName: personalDoc[indexPath.row])
+        }
     }
     
     

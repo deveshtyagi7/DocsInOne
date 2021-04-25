@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import ProgressHUD
 struct Api {
-  
+    static var Upload = UploadApi()
+    
+}
+
+struct Config {
+    static var STORAGE_ROOT_REF = "gs://docsinone-154f5.appspot.com"
 }

@@ -70,6 +70,7 @@ class SignInAndRegisterViewController: UIViewController {
                         // Redirecting to otp screen
                         let storyboard = UIStoryboard(name: "SignInAndRegister", bundle: nil)
                         guard let loginOTPViewController = storyboard.instantiateViewController(identifier: "LoginOTPViewController") as? LoginOTPViewController else {return}
+                        loginOTPViewController.phoneNum = self.mobileNumberTextField.text!
                         self.navigationController?.pushViewController(loginOTPViewController, animated: true)
                     }
                     

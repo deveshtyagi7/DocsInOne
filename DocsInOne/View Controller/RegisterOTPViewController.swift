@@ -24,7 +24,7 @@ class RegisterOTPViewController: UIViewController {
     var timer = Timer()
     var time  = 60
     var phoneNumber : String? = nil
-    
+    var name = ""
     
     
     
@@ -61,7 +61,7 @@ class RegisterOTPViewController: UIViewController {
         
         AuthServices.otpVerification(withVerificationID: verificationID!, withOtp: otpTextField.text!, completion: {
             
-            AuthServices.register(withPhoneNumber: self.phoneNumber!) {
+            AuthServices.register(withPhoneNumber: self.phoneNumber!, name: self.name) {
                  UserDefaults.standard.set(true, forKey: "loggedIn")
                            let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
                            guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}

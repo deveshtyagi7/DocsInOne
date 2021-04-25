@@ -14,8 +14,8 @@ class AuthServices {
     
     static func otpVerification(withVerificationID  verificationID: String, withOtp otp : String , completion : @escaping () -> Void , OnError : @escaping (_ errorMsg : String?) ->Void ){
         let credential = PhoneAuthProvider.provider().credential(
-                   withVerificationID: verificationID,
-                   verificationCode: otp)
+            withVerificationID: verificationID,
+            verificationCode: otp)
         Auth.auth().signIn(with: credential) { (authData, error) in
             if error != nil{
                 OnError(error.debugDescription)
@@ -24,7 +24,7 @@ class AuthServices {
                 print("Successfully    login -------------------->")
                 
                 completion()
-
+                
             }
             
         }
@@ -35,7 +35,7 @@ class AuthServices {
     
     static func signIn(with phoneNum: String ,completion : @escaping () -> Void){
         // signing in
-      //  Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        //  Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNum, uiDelegate: nil) { (verificationID, error) in
             if error != nil{
                 print("Error while verifying phone number during signing in\(error.debugDescription)")
@@ -50,27 +50,28 @@ class AuthServices {
         }
         
     }
-   
-    static func register(withPhoneNumber phoneNumber : String ,completion : @escaping () -> Void){
-          let date = Date()
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = "yyyyHHmmssSS"
-                        let uid = formatter.string(from: date)
-                        
-                        let ref = Database.database().reference().child("users").child("phnNum")
-                        
-                        ref.child(phoneNumber).setValue(uid){
-                            (error:Error?, ref:DatabaseReference) in
-                            if let error = error {
-                                print("Data could not be saved: \(error).")
-                            } else {
-                                completion()
-        //                         UserDefaults.standard.set(true, forKey: "loggedIn")
-        //                                   let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
-        //                                   guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
-        //                                   self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
-                            }
-                        }
+    
+    static func register(withPhoneNumber phoneNumber : String ,name : String,completion : @escaping () -> Void){
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyHHmmssSS"
+        let uid = formatter.string(from: date)
+        let currentUserId = Auth.auth().currentUser?.uid
+        Database.database().reference().child("phnNum").child(phoneNumber).updateChildValues(["Name ":name , "PhoneNumber" : phoneNumber , "Uid" : uid ])
+        let ref = Database.database().reference().child("users").child(currentUserId!)
+        ref.updateChildValues(["Name":name , "PhoneNumber" : phoneNumber , "Uid" : uid ])
+        
+        ref.child(phoneNumber).setValue(uid){(error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+            } else {
+                completion()
+                //                         UserDefaults.standard.set(true, forKey: "loggedIn")
+                //                                   let storyboard = UIStoryboard(name: "HomeLoggedIn", bundle: nil)
+                //                                   guard let homeLoggedInViewController = storyboard.instantiateViewController(identifier: "HomeLoggedInViewController") as? HomeLoggedInViewController else {return}
+                //                                   self.navigationController?.pushViewController(homeLoggedInViewController, animated: true)
+            }
+        }
     }
     
     
