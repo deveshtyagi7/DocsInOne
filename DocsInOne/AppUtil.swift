@@ -274,21 +274,47 @@ enum AlertTitleType:String {
 }
 
 
+extension UIViewController {
+    func showInputDialog(title:String? = nil,
+                         subtitle:String? = nil,
+                         actionTitle:String? = "Add",
+                         cancelTitle:String? = "Cancel",
+                         inputPlaceholder:String? = nil,
+                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = inputPlaceholder
+            textField.keyboardType = inputKeyboardType
+        }
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
+            guard let textField =  alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+func showAlertMessage(vc: UIViewController, title:AlertTitleType , message:String,actionTitle: String? = "Ok", handler:((UIAlertAction)->())? = nil) -> Void {
 
-//func showAlertMessage(vc: UIViewController, title:AlertTitleType , message:String,actionTitle: String? = "Ok", handler:((UIAlertAction)->())? = nil) -> Void {
+    let alertCtrl = UIAlertController(title: title.rawValue, message: message, preferredStyle: UIAlertController.Style.alert)
+
+  let alertCancel = UIAlertAction(title: actionTitle, style: .cancel, handler: handler)
+  alertCtrl.addAction(alertCancel)
+
+//    let imageView = UIImageView(frame: CGRect(x: 115, y: -10, width: 40, height: 40))
+//    imageView.image = UIImage(named: "danger")
 //
-//    let alertCtrl = UIAlertController(title: title.rawValue, message: message, preferredStyle: UIAlertController.Style.alert)
-//
-//  let alertCancel = UIAlertAction(title: actionTitle, style: .cancel, handler: handler)
-//  alertCtrl.addAction(alertCancel)
-//
-////    let imageView = UIImageView(frame: CGRect(x: 115, y: -10, width: 40, height: 40))
-////    imageView.image = UIImage(named: "danger")
-////
-////    alertCtrl.view.addSubview(imageView)
-//
-//  vc.present(alertCtrl, animated: true, completion: nil)
-//}
+//    alertCtrl.view.addSubview(imageView)
+
+  vc.present(alertCtrl, animated: true, completion: nil)
+}
 
 func showConfirmMessage(vc: UIViewController, title:String, message:String,actionTitle: String?, imageName:String = "Alert_Caution", handler:((UIAlertAction)->())?) -> Void {
     
@@ -1622,3 +1648,115 @@ let KeyChain_isWomenOwned = "isWomenOwned"
 let KeyChain_isMinorityOwned = "isMinorityOwned"
 
 
+protocol CommonViewControllerMethods {
+    static func getStoryboardInstanceForNC() -> UINavigationController?
+    static func getStoryboardInstanceForVC() -> UIViewController?
+    static func getStoryboardInstanceForTabVC() -> UITabBarController?
+}
+extension UIViewController:CommonViewControllerMethods{
+    static func getStoryboardInstanceForTabVC() -> UITabBarController? {
+        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        guard let tabBarViewController = storyboard.instantiateInitialViewController() as? UITabBarController else { return nil }
+        return tabBarViewController
+    }
+    
+    static func getStoryboardInstanceForNC() -> UINavigationController? {
+        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return nil }
+        return navController
+    }
+    
+    static func getStoryboardInstanceForVC() -> UIViewController? {
+        let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
+        guard let viewController = storyboard.instantiateInitialViewController() else { return nil }
+        
+        return viewController
+    }
+    
+}
+
+
+extension UIViewController {
+    func hideKeyboardOnTap(){
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    func addSwipeRight(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(UIViewController.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        view.addGestureRecognizer(swipeRight)
+    }
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.right:
+                navigationController?.popViewController(animated: true)
+                print("Swiped right")
+            case UISwipeGestureRecognizer.Direction.down:
+                print("Swiped down")
+            case UISwipeGestureRecognizer.Direction.left:
+                print("Swiped left")
+            case UISwipeGestureRecognizer.Direction.up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
+    }
+}
+
+
+
+protocol ReusableView {
+    static var identifier:String{
+        get
+    }
+    static var nib:UINib{
+        get
+    }
+}
+extension UITableViewCell:ReusableView{
+    
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+/*extension UICollectionViewCell:ReusableView{
+    
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}*/
+
+extension UITableViewHeaderFooterView:ReusableView{
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UICollectionReusableView:ReusableView{
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: nil)
+    }
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}

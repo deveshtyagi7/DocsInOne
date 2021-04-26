@@ -95,9 +95,7 @@ class HomeLoggedInViewController: UIViewController {
         
     }
     func transitionToNew(_ menuType: menuType) {
-        let title = String(describing: menuType).capitalized
-        self.title = title
-        
+       
         topView?.removeFromSuperview()
         switch menuType {
         case .logout:
@@ -109,13 +107,20 @@ class HomeLoggedInViewController: UIViewController {
                 ProgressHUD.showError(err)
             }
             
-            
+        case .sendDoc :
+            navigateToSendDoc()
        
         default:
             break
         }
     }
     
+    func navigateToSendDoc(){
+        guard let nav = SendDocVC.getStoryboardInstanceForNC(), let vc = nav.topViewController as? SendDocVC else {
+            return
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
     func goToUploadDocVc(with docName : String){
         let storyboard = UIStoryboard(name: "UploadDocVc", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "UploadDocVc") as? UploadDocVc else {return}

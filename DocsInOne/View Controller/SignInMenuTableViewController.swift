@@ -35,7 +35,7 @@ class SignInMenuTableViewController: UITableViewController {
 }
 enum menuType : Int{
     case home
-    case uploadedDoc
+    case sendDoc
     case editprofile
     case faqs
     case about
