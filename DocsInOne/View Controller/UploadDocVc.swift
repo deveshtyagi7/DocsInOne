@@ -15,7 +15,13 @@ import WebKit
 import PDFKit
 class UploadDocVc : UIViewController,ImageScannerControllerDelegate {
  
-    @IBOutlet weak var pdfViewer: PDFView!
+    @IBOutlet weak var pdfViewer: PDFView!{
+            didSet{
+                pdfViewer.autoScales = true
+                pdfViewer.displayMode = .singlePage
+              
+            }
+    }
     @IBOutlet weak var viewDocBtn: UIButton!
     var docName = ""
     var docURL : URL?

@@ -34,6 +34,10 @@
 		10CA3A7A2475B88E00712EBE /* HomeLoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */; };
 		10DF035724FBC12A0030568F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DF035624FBC12A0030568F /* AuthServices.swift */; };
 		10DF035924FBC5F10030568F /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DF035824FBC5F10030568F /* Api.swift */; };
+		1E0E851F263C632C0002E0DF /* ViewAllDocsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E0E851E263C632C0002E0DF /* ViewAllDocsVC.storyboard */; };
+		1E0E8521263C63740002E0DF /* ViewAllDocsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0E8520263C63740002E0DF /* ViewAllDocsVC.swift */; };
+		1E0E8524263C66B30002E0DF /* DocPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0E8522263C66B30002E0DF /* DocPreviewTableViewCell.swift */; };
+		1E0E8525263C66B30002E0DF /* DocPreviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E0E8523263C66B30002E0DF /* DocPreviewTableViewCell.xib */; };
 		1E1BE1E925F5C73B00D94ECE /* UploadDocVc.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1BE1E825F5C73A00D94ECE /* UploadDocVc.storyboard */; };
 		1E1BE1EC25F5C7A800D94ECE /* UploadDocVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BE1EB25F5C7A800D94ECE /* UploadDocVc.swift */; };
 		1E2ECF9B2635B35000A5B55A /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2ECF9A2635B35000A5B55A /* AppUtil.swift */; };
@@ -42,6 +46,8 @@
 		1E6D33E926371F3900067730 /* SendDocTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D33E726371F3900067730 /* SendDocTableViewCell.swift */; };
 		1E6D33EA26371F3900067730 /* SendDocTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6D33E826371F3900067730 /* SendDocTableViewCell.xib */; };
 		1EB2E1B925F68FE9003624C2 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2E1B825F68FE9003624C2 /* Upload.swift */; };
+		1ED4539E263C460B00DEDAAA /* ReceivedDoc.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ED4539D263C460B00DEDAAA /* ReceivedDoc.storyboard */; };
+		1ED453A0263C466400DEDAAA /* ReceivedDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED4539F263C466400DEDAAA /* ReceivedDoc.swift */; };
 		EDA242BF9C08664E1BE3AF29 /* Pods_DocsInOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EB5C527615BFE14CE2D96B /* Pods_DocsInOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +81,10 @@
 		10CA3A792475B88E00712EBE /* HomeLoggedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoggedInViewController.swift; sourceTree = "<group>"; };
 		10DF035624FBC12A0030568F /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		10DF035824FBC5F10030568F /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		1E0E851E263C632C0002E0DF /* ViewAllDocsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewAllDocsVC.storyboard; sourceTree = "<group>"; };
+		1E0E8520263C63740002E0DF /* ViewAllDocsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllDocsVC.swift; sourceTree = "<group>"; };
+		1E0E8522263C66B30002E0DF /* DocPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocPreviewTableViewCell.swift; sourceTree = "<group>"; };
+		1E0E8523263C66B30002E0DF /* DocPreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocPreviewTableViewCell.xib; sourceTree = "<group>"; };
 		1E1BE1E825F5C73A00D94ECE /* UploadDocVc.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UploadDocVc.storyboard; sourceTree = "<group>"; };
 		1E1BE1EB25F5C7A800D94ECE /* UploadDocVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocVc.swift; sourceTree = "<group>"; };
 		1E2ECF9A2635B35000A5B55A /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -83,6 +93,8 @@
 		1E6D33E726371F3900067730 /* SendDocTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDocTableViewCell.swift; sourceTree = "<group>"; };
 		1E6D33E826371F3900067730 /* SendDocTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendDocTableViewCell.xib; sourceTree = "<group>"; };
 		1EB2E1B825F68FE9003624C2 /* Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
+		1ED4539D263C460B00DEDAAA /* ReceivedDoc.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReceivedDoc.storyboard; sourceTree = "<group>"; };
+		1ED4539F263C466400DEDAAA /* ReceivedDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedDoc.swift; sourceTree = "<group>"; };
 		847F135854552BF4599BEA58 /* Pods-DocsInOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.debug.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.debug.xcconfig"; sourceTree = "<group>"; };
 		BD77E18137C20B3687A172C2 /* Pods-DocsInOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocsInOne.release.xcconfig"; path = "Target Support Files/Pods-DocsInOne/Pods-DocsInOne.release.xcconfig"; sourceTree = "<group>"; };
 		D2EB5C527615BFE14CE2D96B /* Pods_DocsInOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocsInOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +121,8 @@
 				10B364C4247A5F56007BC959 /* CategoryCollectionViewCell.swift */,
 				1E6D33E726371F3900067730 /* SendDocTableViewCell.swift */,
 				1E6D33E826371F3900067730 /* SendDocTableViewCell.xib */,
+				1E0E8522263C66B30002E0DF /* DocPreviewTableViewCell.swift */,
+				1E0E8523263C66B30002E0DF /* DocPreviewTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +180,8 @@
 				103CFA2124700BAA007ED20A /* LoginOTPViewController.swift */,
 				1E1BE1EB25F5C7A800D94ECE /* UploadDocVc.swift */,
 				1E6D33E326371ECE00067730 /* SendDocVC.swift */,
+				1ED4539F263C466400DEDAAA /* ReceivedDoc.swift */,
+				1E0E8520263C63740002E0DF /* ViewAllDocsVC.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -179,6 +195,8 @@
 				10CA3A772475B85200712EBE /* HomeLoggedIn.storyboard */,
 				1E1BE1E825F5C73A00D94ECE /* UploadDocVc.storyboard */,
 				1E6D33DC26371D6700067730 /* SendDocVC.storyboard */,
+				1ED4539D263C460B00DEDAAA /* ReceivedDoc.storyboard */,
+				1E0E851E263C632C0002E0DF /* ViewAllDocsVC.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -271,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10CA3A782475B85200712EBE /* HomeLoggedIn.storyboard in Resources */,
+				1E0E851F263C632C0002E0DF /* ViewAllDocsVC.storyboard in Resources */,
 				10923DDB246C030500D918F0 /* LaunchScreen.storyboard in Resources */,
 				10923DED246C451200D918F0 /* SignInAndRegister.storyboard in Resources */,
 				10923DD8246C030500D918F0 /* Assets.xcassets in Resources */,
@@ -280,7 +299,9 @@
 				1E6D33EA26371F3900067730 /* SendDocTableViewCell.xib in Resources */,
 				10CA3A7524750F4000712EBE /* CREDC in Resources */,
 				103CFA2824701740007ED20A /* GoogleService-Info.plist in Resources */,
+				1ED4539E263C460B00DEDAAA /* ReceivedDoc.storyboard in Resources */,
 				1E1BE1E925F5C73B00D94ECE /* UploadDocVc.storyboard in Resources */,
+				1E0E8525263C66B30002E0DF /* DocPreviewTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +358,7 @@
 				1EB2E1B925F68FE9003624C2 /* Upload.swift in Sources */,
 				10923DE4246C17F600D918F0 /* LoggedOutMenuTableViewController.swift in Sources */,
 				10CA3A7A2475B88E00712EBE /* HomeLoggedInViewController.swift in Sources */,
+				1E0E8521263C63740002E0DF /* ViewAllDocsVC.swift in Sources */,
 				10923DD3246C02FC00D918F0 /* HomeViewController.swift in Sources */,
 				10DF035924FBC5F10030568F /* Api.swift in Sources */,
 				1E2ECF9B2635B35000A5B55A /* AppUtil.swift in Sources */,
@@ -350,10 +372,12 @@
 				10B364C3247A5F18007BC959 /* CategoryTableViewCell.swift in Sources */,
 				10923DD1246C02FC00D918F0 /* SceneDelegate.swift in Sources */,
 				10BFA695246D8C4000408120 /* RegisterOTPViewController.swift in Sources */,
+				1ED453A0263C466400DEDAAA /* ReceivedDoc.swift in Sources */,
 				10923DEB246C3A9400D918F0 /* SignInMenuTableViewController.swift in Sources */,
 				10923DE9246C396B00D918F0 /* SlideInTransition.swift in Sources */,
 				1070C0C02477D14E001F0575 /* ImageCollectionViewCell.swift in Sources */,
 				10BFA68D246C4DAD00408120 /* SignInAndRegisterViewController.swift in Sources */,
+				1E0E8524263C66B30002E0DF /* DocPreviewTableViewCell.swift in Sources */,
 				10DF035724FBC12A0030568F /* AuthServices.swift in Sources */,
 				103CFA2224700BAA007ED20A /* LoginOTPViewController.swift in Sources */,
 				10BFA693246D89F800408120 /* SlideUpTransition.swift in Sources */,

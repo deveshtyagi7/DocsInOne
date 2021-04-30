@@ -109,10 +109,19 @@ class HomeLoggedInViewController: UIViewController {
             
         case .sendDoc :
             navigateToSendDoc()
+            
+        case .receivedDoc :
+            navigateToReceivedDoc()
        
         default:
             break
         }
+    }
+    func navigateToReceivedDoc(){
+        guard let nav = ReceivedDoc.getStoryboardInstanceForNC(), let vc = nav.topViewController as? ReceivedDoc else {
+            return
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func navigateToSendDoc(){
@@ -125,6 +134,7 @@ class HomeLoggedInViewController: UIViewController {
         let storyboard = UIStoryboard(name: "UploadDocVc", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "UploadDocVc") as? UploadDocVc else {return}
         vc.docName = docName
+        vc.title = docName
         self.navigationController?.pushViewController( vc, animated: true)
     }
     
@@ -178,6 +188,7 @@ extension HomeLoggedInViewController :UITableViewDelegate, UITableViewDataSource
 extension HomeLoggedInViewController : CategoryTableViewCellDelegate{
     func goToUploadDoc(docName: String) {
         print("doc ==> \(docName)")
+        
         goToUploadDocVc(with: docName)
         
     }

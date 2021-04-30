@@ -1507,7 +1507,7 @@ class FileDownloader {
         {
             let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
-            let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+            let destinationUrl = documentsUrl.appendingPathComponent("\(url.lastPathComponent).pdf")
         
                 let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
                 var request = URLRequest(url: url)
@@ -1760,3 +1760,159 @@ extension UICollectionReusableView:ReusableView{
         return String(describing: self)
     }
 }
+//
+//  UIView+Extension.swift
+ 
+//
+//  Created by Amit Panton 14/03/19.
+ 
+
+import UIKit
+import SafariServices
+
+@IBDesignable
+class CustomView: UIView {
+    
+    @IBInspectable var cornerRadius : CGFloat = 0
+    @IBInspectable var shadowRadius : CGFloat = 5
+    @IBInspectable var shadowWidth : Int = 2
+    @IBInspectable var shadowHeight : Int = 2
+    @IBInspectable var shadowColor : UIColor = UIColor.gray
+    @IBInspectable var shadowOpacity : Float = 0.8
+    @IBInspectable var fillColor : UIColor = .white
+    @IBInspectable var borderColor : UIColor?
+    @IBInspectable var borderWidth : CGFloat = 0
+    
+    var shadowLayer: CAShapeLayer!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundColor = UIColor.clear
+        if shadowLayer == nil {
+            if(cornerRadius == 0) {
+                cornerRadius = ( self.bounds.size.height / 2 )
+                
+            }
+            
+            shadowLayer = CAShapeLayer()
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+            
+            shadowLayer.fillColor = fillColor.cgColor
+            
+            shadowLayer.shadowColor = shadowColor.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = CGSize(width: shadowWidth, height: shadowHeight)
+            shadowLayer.shadowOpacity = shadowOpacity
+            shadowLayer.shadowRadius = shadowRadius
+            if let borderColor = borderColor{
+                shadowLayer.borderColor = borderColor.cgColor
+            }
+            if  borderWidth > 0{
+                shadowLayer.borderWidth = borderWidth
+            }
+            layer.insertSublayer(shadowLayer, at: 0)
+        }
+    }
+}
+extension UIView{
+    func animShow(){
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.beginFromCurrentState],
+                       animations: {
+                        self.center.y -= self.bounds.height
+                        self.layoutIfNeeded()
+        }, completion: nil)
+        self.isHidden = false
+    }
+    func animHide(){
+        UIView.animate(withDuration: 0, delay: 0, options: [.beginFromCurrentState],
+                       animations: {
+                        self.center.y += self.bounds.height
+                        self.layoutIfNeeded()
+                        
+        },  completion: {(_ completed: Bool) -> Void in
+            self.isHidden = true
+        })
+    }
+    
+    
+    //self.myView.addShadow(shadowColor: .black, offSet: CGSize(width: 2.6, height: 2.6), opacity: 0.8, shadowRadius: 5.0, cornerRadius: 20.0, corners: [.topRight, .topLeft], fillColor: .red)
+
+    func addShadow(shadowColor: UIColor, offSet: CGSize, opacity: Float, shadowRadius: CGFloat, cornerRadius: CGFloat, corners: UIRectCorner, fillColor: UIColor = .white) {
+        
+        let shadowLayer = CAShapeLayer()
+        let size = CGSize(width: cornerRadius, height: cornerRadius)
+        let cgPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: size).cgPath //1
+        shadowLayer.path = cgPath //2
+        shadowLayer.fillColor = fillColor.cgColor //3
+        shadowLayer.shadowColor = shadowColor.cgColor //4
+        shadowLayer.shadowPath = cgPath
+        shadowLayer.shadowOffset = offSet //5
+        shadowLayer.shadowOpacity = opacity
+        shadowLayer.shadowRadius = shadowRadius
+        self.layer.addSublayer(shadowLayer)
+    }
+    
+    func addErrorImage(_ image:UIImage?  ,yAxis:CGFloat) {
+        guard let img = image  else {
+            return
+        }
+        
+        let imageView = UIImageView()
+        imageView.tag = 30003
+        imageView.image = img
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        self.addSubview(imageView)
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -yAxis),
+        imageView.widthAnchor.constraint(equalToConstant: self.frame.width),
+        imageView.heightAnchor.constraint(equalToConstant: 250)])
+        
+        /*
+         newView.translatesAutoresizingMaskIntoConstraints = false
+         let horizontalConstraint = newView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+         let verticalConstraint = newView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+         NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
+         */
+    }
+    
+    
+    
+    func addErrorLabel(_ title:String , textColor:UIColor, fontData:UIFont ,yAxis:CGFloat){
+        removeErrorLabel()
+        let label = UILabel()
+        label.tag = 20002
+        label.font = fontData
+        label.textColor = textColor
+        label.text = title
+        label.numberOfLines = 0
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -yAxis),
+            label.widthAnchor.constraint(equalToConstant: self.frame.size.width),
+            label.heightAnchor.constraint(equalToConstant: 135)])
+       // return label
+    }
+    
+    func removeErrorLabel(){
+        if let foundView = self.viewWithTag(20002) {
+            foundView.removeFromSuperview()
+        }
+        if let imageView = self.viewWithTag(30003) {
+            imageView.removeFromSuperview()
+        }
+        
+        //let label:UILabel = self.viewWithTag(20002) as! UILabel
+        //label.removeFromSuperview()
+    }
+    
+    
+}
+

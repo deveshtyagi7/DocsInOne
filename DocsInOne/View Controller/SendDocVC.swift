@@ -13,7 +13,18 @@ class SendDocVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var docs : [Docs] = [Docs](){
         didSet{
-            tableView.reloadData()
+            self.view.removeErrorLabel()
+            if docs.count == 0{
+                self.tableView.isHidden = true
+                let font = UIFont(name: "Open Sans", size: 16) ?? UIFont.boldSystemFont(ofSize: 16)
+                self.view.addErrorLabel("No Document Is Uploded Yet", textColor: #colorLiteral(red: 0.08033012599, green: 0.1485913098, blue: 0.3262429237, alpha: 1), fontData: font, yAxis: -30.0)
+               
+            }else{
+                self.tableView.isHidden = false
+                tableView.reloadData()
+                self.view.removeErrorLabel()
+            }
+          
         }
     }
     override func viewDidLoad() {
@@ -30,7 +41,7 @@ class SendDocVC: UIViewController {
         docs.forEach { (doc) in
             if doc.isSelected {
                 count += 1
-               
+                
             }
         }
         if count == 0{
@@ -43,39 +54,116 @@ class SendDocVC: UIViewController {
                             inputKeyboardType: .numberPad) { (cancel) in
                 self.dismiss(animated: false)
             } actionHandler: { (phoneNum) in
+                ProgressHUD.show("Fetch Information")
                 if let num = phoneNum, num.count == 10{
-                    self.sendDocument()
+                    self.sendDocument(on : num )
                 }else {
+                    ProgressHUD.dismiss()
                     showAlertMessage(vc: topMostController(), title: .Message, message: "Please enter a correct number")
                 }
             }
-
+            
         }
     }
     
-    func sendDocument(){
+    func sendDocument(on phnNum : String){
+        
+        // Check if Number exists
+        checkUserExist(with : phnNum) {[weak self] (isExists, name) in
+            guard let strongSelf = self else { return }
+            ProgressHUD.dismiss()
+            // If exist -- take confirmation
+            if isExists{
+                // if confirm --- > Send Dock
+              showMultipleActionMessage(vc: strongSelf,
+                                        title: "Confirmation",
+                                        message: "Are you sure want to share your document with \(name)",
+                                        actionTitle1: "Yes", actionTitle2: "No") { (yes) in
+                ProgressHUD.show("Sending...")
+                var selectedDoc : [String : String] = [String : String]()
+                    strongSelf.docs.forEach { (doc) in
+                    if doc.isSelected {
+                        let docName = doc.name
+                        let location = "\(doc.docUrl)"
+                        selectedDoc["\(docName)"] = location
+                    }
+                }
+                print("all selected docs ===> \(selectedDoc)")
+                strongSelf.shareDoc(with : phnNum ,selectedDoc : selectedDoc)
+               
+                //share doc
+              } handler2: { (no) in
+                //popup
+              }
+
+            }else {
+                //not show error
+                ProgressHUD.dismiss()
+                showAlertMessage(vc: topMostController(), title: .Oops, message: "This phone number is not registered.")
+            }
+        }
+        
+        
+    }
+    func shareDoc(with phnNum :String,selectedDoc : [String : String]){
+       
+        
+        let ref = Database.database().reference()
+        let userid = getUserID()
+        ref.child("RecievedDoc").child(phnNum).child(userid!).updateChildValues(selectedDoc) { (err, ref) in
+            if err != nil{
+                ProgressHUD.showSuccess("Sent")
+            }
+            else{
+                ProgressHUD.dismiss()
+            }
+        }
+    }
+    func checkUserExist(with phnNum :String,completion: @escaping((Bool,String) -> ())){
+        let ref = Database.database().reference()
+        
+        ref.child("phnNum").observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.hasChild("+91\(phnNum)"){
+               
+                
+                if let dict = snapshot.value as? [String : Any]{
+                    let data = dict["+91\(phnNum)"] as! [String : String]
+                    let name = data["Name"]
+                    completion(true,name ?? "")
+                }
+                print("USer exist ===> \(snapshot.value)")
+                completion(true, "")
+            }
+            else{
+                print("USer  not exist")
+                completion(false,"")
+                
+            }
+        }
         
     }
     func fetchUserDocs(){
         ProgressHUD.show("Loading...")
         let ref = Database.database().reference().child("docs")
-        
+        var allDoc :[Docs] = [Docs]()
         if let phnNum = getUserID(){
             ref.child(phnNum).observeSingleEvent(of: .value) { (snap) in
                 ProgressHUD.dismiss()
                 if let dict = snap.value as? [String : String]{
-                    var allDoc :[Docs] = [Docs]()
+                   
                     dict.forEach { (name, url) in
                         let doc = Docs(name: name, docUrl: url)
                         allDoc.append(doc)
                     }
-                    self.docs = allDoc
+                   
                 }
-               
+                self.docs = allDoc
             }
         }
+        ProgressHUD.dismiss()
+       
     }
-
+    
 }
 extension SendDocVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

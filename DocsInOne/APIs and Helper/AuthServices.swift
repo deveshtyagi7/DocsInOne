@@ -57,7 +57,7 @@ class AuthServices {
         formatter.dateFormat = "yyyyHHmmssSS"
         let uid = formatter.string(from: date)
         let currentUserId = Auth.auth().currentUser?.uid
-        Database.database().reference().child("phnNum").child(phoneNumber).updateChildValues(["Name ":name , "PhoneNumber" : phoneNumber , "Uid" : uid ])
+        Database.database().reference().child("phnNum").child(phoneNumber).updateChildValues(["Name":name , "PhoneNumber" : phoneNumber , "Uid" : uid ])
         let ref = Database.database().reference().child("users").child(currentUserId!)
         ref.updateChildValues(["Name":name , "PhoneNumber" : phoneNumber , "Uid" : uid ])
         
