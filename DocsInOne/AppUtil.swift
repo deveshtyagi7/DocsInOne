@@ -994,6 +994,55 @@ extension UIView {
     }
 
 }
+extension String {
+    
+    func getSubString( from:Int, to:Int)-> String {
+        let subStart = self.index(self.startIndex, offsetBy: from)
+        let subEnd = self.index(self.startIndex, offsetBy: to)
+        return String(self[subStart ..< subEnd])
+    }
+    
+    func charAt(at: Int) -> Character {
+        let charIndex = self.index(self.startIndex, offsetBy: at)
+        return self[charIndex]
+    }
+
+    //MARK: for language change
+    var localized: String {
+        return self
+        /*var selectedLang = "en"
+        
+        let path = Bundle.main.path(forResource: selectedLang, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")*/
+    }
+    
+    func slice(from: String, to: String) -> String? {
+        
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                substring(with: substringFrom..<substringTo)
+            }
+        }
+    }
+
+}
+extension String {
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        
+        return ceil(boundingBox.height)
+    }
+    
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        
+        return ceil(boundingBox.width)
+    }
+}
 
 extension CGFloat {
     static var random: CGFloat {
@@ -1707,6 +1756,98 @@ extension UIViewController {
                 break
             }
         }
+    }
+}
+class TitanCryptoGraphy {
+    private var encryptionKey:String
+    
+    init(key:String) {
+        encryptionKey = key
+    }
+    
+    func encrypt(data:String) ->String  {
+        
+        let str1 = self.encryptionKey
+        let i = str1.count
+        var l = -1
+        let dRandomNumber = Double.random(in: 0..<1)
+        var i1 = Int(dRandomNumber * 10000.0) % 255 + 1
+        
+        var str2 =  String(i1, radix: 16)
+        
+        if str2.count == 1{
+            str2 = "0" + str2
+        }
+        
+        for char in data{
+            var i2 = char.unicodeScalars.first?.value ?? 0
+            var j = (Int(i2) + i1) % 255
+            
+            if l < i - 1 {
+                l += 1
+            }else{
+                l = 0
+            }
+            
+            
+            let subStr = str1.getSubString(from: l, to: l + 1) //getSubString(for: str1, from: l, to: l + 1)
+            i2 = subStr.unicodeScalars.first?.value ?? 0
+            
+            j = j ^ Int(i2)
+            if j <= 15{
+                str2 = str2 + " " + String(j, radix: 16)
+            }else{
+                str2 = str2 + String(j, radix: 16)
+            }
+            
+            i1 = j
+        }
+        return str2.uppercased()
+        
+    }
+    
+    
+    func decrypt(data:String)->String{
+        let str1 = encryptionKey
+        var str2 = ""
+        let i = str1.count
+        var l = -1
+        
+        let dataSubString = data.getSubString(from: 0, to: 2)//getSubString(for: data, from: 0, to: 2)
+        var i1 = Int(dataSubString,radix:16) ?? 0
+        
+        var k = 2
+        
+        while k < data.count - 1 {
+            
+            let dataSubString = data.getSubString(from: k, to: k + 2) //getSubString(for: data, from: k, to: k + 2)
+            
+            let j = Int(dataSubString.trimmingCharacters(in: CharacterSet.whitespaces),radix:16) ?? 0
+            if l < i - 1 {
+                l += 1
+            }else{
+                l = 0
+            }
+            let subStr = str1.getSubString(from: l, to: l + 1) //getSubString(for: str1, from: l, to: l + 1)
+            
+            let i2 = subStr.unicodeScalars.first?.value ?? 0
+            
+            var i3 = j ^ Int(i2)
+            if i3 <= i1 {
+                i3 = 255 + i3 - i1
+            }
+            else{
+                i3 -= i1
+            }
+            if let u = UnicodeScalar(i3) {
+                let c = Character(u)
+                str2 = str2 + String(c)
+                i1 = j
+            }
+            k += 2
+        }
+        
+        return str2
     }
 }
 
