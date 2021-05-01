@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -24,11 +24,10 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card1" translatesAutoresizingMaskIntoConstraints="NO" id="Dzh-qR-qgu" userLabel="card Image">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46R-83-thM">
-                                        <rect key="frame" x="17" y="151" width="150" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46R-83-thM">
+                                        <rect key="frame" x="17" y="151" width="337" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="E53-Af-d7v"/>
-                                            <constraint firstAttribute="width" constant="150" id="g4f-XV-T26"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,6 +55,7 @@
                                     <constraint firstItem="xfx-rY-vU0" firstAttribute="centerY" secondItem="Dzh-qR-qgu" secondAttribute="centerY" id="LHn-r7-VXo"/>
                                     <constraint firstItem="xfx-rY-vU0" firstAttribute="centerX" secondItem="Dzh-qR-qgu" secondAttribute="centerX" id="UfL-kh-Ko9"/>
                                     <constraint firstItem="46R-83-thM" firstAttribute="leading" secondItem="xJ2-h7-rAb" secondAttribute="leading" constant="17" id="at2-fD-mVB"/>
+                                    <constraint firstAttribute="trailing" secondItem="46R-83-thM" secondAttribute="trailing" constant="20" id="gbg-zk-srU"/>
                                     <constraint firstAttribute="bottom" secondItem="46R-83-thM" secondAttribute="bottom" constant="26" id="hwl-uj-lUA"/>
                                     <constraint firstAttribute="bottom" secondItem="Dzh-qR-qgu" secondAttribute="bottom" id="iC7-kQ-eiq"/>
                                     <constraint firstItem="Dzh-qR-qgu" firstAttribute="leading" secondItem="xJ2-h7-rAb" secondAttribute="leading" id="xD5-dM-v8B"/>
@@ -67,7 +67,7 @@
                                 <color key="sectionIndexBackgroundColor" systemColor="systemGray4Color"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoryTableCell" rowHeight="220" id="Bs4-VO-dXb" customClass="CategoryTableViewCell" customModule="DocsInOne" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="220"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bs4-VO-dXb" id="zms-k6-TE6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
